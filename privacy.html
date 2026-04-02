@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchAI - 隱私權政策</title>
+    <style>
+        :root {
+            --purple: #7C5CFC;
+            --purple-light: #A855F7;
+            --bg: #0A0E1A;
+            --card: #1C1F2E;
+            --text: #F0F0F5;
+            --text-secondary: #9CA3AF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 32px;
+        }
+        .header h1 { font-size: 2em; margin-bottom: 8px; color: var(--purple-light); }
+        .header p { color: var(--text-secondary); }
+        .back { color: var(--purple-light); text-decoration: none; font-size: 0.9em; }
+        .back:hover { text-decoration: underline; }
+        .highlight {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .section {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .section h2 { color: var(--purple-light); margin-bottom: 12px; font-size: 1.2em; }
+        .section p, .section li { color: var(--text-secondary); }
+        .section ul { padding-left: 20px; }
+        .section li { margin-bottom: 6px; }
+        .section a { color: var(--purple-light); text-decoration: none; }
+        .section a:hover { text-decoration: underline; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back">&larr; 返回支援中心</a>
+            <h1>隱私權政策</h1>
+            <p>生效日期：2026 年 4 月 2 日</p>
+        </div>
+
+        <div class="highlight">
+            我們不收集任何資料。一切都留在您的裝置上。
+        </div>
+
+        <div class="section">
+            <h2>1. 我們不收集的資訊</h2>
+            <p>BenchAI <strong>不會</strong>收集、儲存或傳輸：</p>
+            <ul>
+                <li>個人資訊（姓名、電子郵件、電話號碼）</li>
+                <li>使用分析或行為資料</li>
+                <li>對話內容或提示詞</li>
+                <li>API 金鑰或憑證</li>
+                <li>用於追蹤的裝置識別碼</li>
+                <li>位置資料</li>
+                <li>崩潰報告或診斷資料</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. 儲存在您裝置上的資料</h2>
+            <p>以下資料<strong>僅儲存在您的裝置本地</strong>，絕不會傳輸至 BenchAI 或任何第三方：</p>
+            <ul>
+                <li><strong>API 金鑰：</strong>使用 iOS Keychain 進行硬體級安全加密。金鑰不會包含在裝置備份中。</li>
+                <li><strong>聊天記錄：</strong>使用 Apple 的 SwiftData 框架儲存於本地。</li>
+                <li><strong>比較結果：</strong>使用 Apple 的 SwiftData 框架儲存於本地。</li>
+                <li><strong>App 偏好設定：</strong>使用 UserDefaults 儲存於本地（主題、語言設定）。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. 第三方服務</h2>
+            <p>當您使用 BenchAI 時，您的提示詞和訊息會<strong>直接從您的裝置</strong>發送至您已設定的 AI 供應商：</p>
+            <ul>
+                <li><a href="https://openai.com/privacy" target="_blank">OpenAI 隱私權政策</a></li>
+                <li><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic 隱私權政策</a></li>
+                <li><a href="https://policies.google.com/privacy" target="_blank">Google 隱私權政策</a></li>
+                <li><a href="https://groq.com/privacy-policy" target="_blank">Groq 隱私權政策</a></li>
+            </ul>
+            <p style="margin-top: 12px;">BenchAI 不作為中介。沒有 BenchAI 伺服器。您的資料使用您自己的 API 金鑰直接傳送至您選擇的 AI 供應商。</p>
+        </div>
+
+        <div class="section">
+            <h2>4. 資料安全</h2>
+            <ul>
+                <li>API 金鑰透過 iOS Keychain 進行硬體級加密</li>
+                <li>所有網路通訊使用 HTTPS 加密</li>
+                <li>不在外部伺服器儲存任何資料</li>
+                <li>未整合任何第三方分析或追蹤 SDK</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. 兒童隱私</h2>
+            <p>BenchAI 不會故意收集 13 歲以下兒童的任何資料。由於本 App 完全不收集任何資料，因此無需特殊規範。</p>
+        </div>
+
+        <div class="section">
+            <h2>6. 您的權利</h2>
+            <ul>
+                <li>隨時從「設定 → 智慧金鑰」<strong>刪除 API 金鑰</strong></li>
+                <li>從「歷史」分頁<strong>刪除對話記錄</strong></li>
+                <li><strong>解除安裝 App</strong> 即移除所有資料</li>
+                <li>您對儲存在裝置上的所有資料擁有完全控制權</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. 政策變更</h2>
+            <p>我們可能會不時更新本隱私權政策。任何變更將反映在 App 和本文件中，並更新生效日期。</p>
+        </div>
+
+        <div class="section">
+            <h2>8. 聯絡我們</h2>
+            <p>如對本隱私權政策有任何疑問，請來信：<br>
+            <a href="mailto:thsiao4000@gmail.com">thsiao4000@gmail.com</a></p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 BenchAI. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

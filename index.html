@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchAI - 支援中心</title>
+    <style>
+        :root {
+            --purple: #7C5CFC;
+            --purple-light: #A855F7;
+            --bg: #0A0E1A;
+            --card: #1C1F2E;
+            --text: #F0F0F5;
+            --text-secondary: #9CA3AF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 24px;
+            margin-bottom: 40px;
+        }
+        .hero h1 { font-size: 2.5em; margin-bottom: 8px; }
+        .hero p { font-size: 1.1em; opacity: 0.9; }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .card h2 { color: var(--purple-light); margin-bottom: 12px; font-size: 1.3em; }
+        .card p, .card li { color: var(--text-secondary); }
+        .card a { color: var(--purple-light); text-decoration: none; }
+        .card a:hover { text-decoration: underline; }
+        .links { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .link-btn {
+            display: block;
+            background: var(--card);
+            border: 1px solid rgba(124, 92, 252, 0.3);
+            border-radius: 16px;
+            padding: 20px 24px;
+            text-decoration: none;
+            color: var(--text);
+            transition: border-color 0.2s;
+        }
+        .link-btn:hover { border-color: var(--purple); }
+        .link-btn .title { font-weight: 600; font-size: 1.1em; }
+        .link-btn .desc { color: var(--text-secondary); font-size: 0.9em; margin-top: 4px; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>BenchAI</h1>
+            <p>AI 模型並排比較工具</p>
+        </div>
+
+        <div class="card">
+            <h2>關於 BenchAI</h2>
+            <p>BenchAI 讓您在同一個介面中，比較全球頂尖 AI 模型的回應——包括 OpenAI 的 GPT、Anthropic 的 Claude、Google 的 Gemini，以及 Groq 上的開源模型。支援 4 大供應商共 11 個模型。</p>
+        </div>
+
+        <div class="card">
+            <h2>快速入門</h2>
+            <p>1. 前往「設定 → 智慧金鑰」，輸入至少一組 API 金鑰<br>
+               2. 前往「比較」分頁，輸入提示詞<br>
+               3. 選擇 2 個以上模型，點擊「開始比較」<br>
+               4. 或使用「聊天」分頁與單一模型對話</p>
+        </div>
+
+        <div class="card">
+            <h2>取得 API 金鑰</h2>
+            <p>
+                <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI API 金鑰</a><br>
+                <a href="https://console.anthropic.com/settings/keys" target="_blank">Anthropic API 金鑰</a><br>
+                <a href="https://aistudio.google.com/apikey" target="_blank">Google Gemini API 金鑰</a><br>
+                <a href="https://console.groq.com/keys" target="_blank">Groq API 金鑰</a>
+            </p>
+        </div>
+
+        <div class="links">
+            <a href="privacy.html" class="link-btn">
+                <div class="title">隱私權政策</div>
+                <div class="desc">了解我們如何保護您的資料</div>
+            </a>
+            <a href="terms.html" class="link-btn">
+                <div class="title">服務條款</div>
+                <div class="desc">使用 BenchAI 的相關條款</div>
+            </a>
+        </div>
+
+        <div class="card" style="margin-top: 24px;">
+            <h2>聯絡我們</h2>
+            <p>如有任何問題或建議，請來信：<br>
+            <a href="mailto:thsiao4000@gmail.com">thsiao4000@gmail.com</a></p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 BenchAI. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
