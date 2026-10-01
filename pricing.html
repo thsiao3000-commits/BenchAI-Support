@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchAI - 模型價目表</title>
+    <style>
+        :root {
+            --purple: #7C5CFC;
+            --purple-light: #A855F7;
+            --bg: #0A0E1A;
+            --card: #1C1F2E;
+            --text: #F0F0F5;
+            --text-secondary: #9CA3AF;
+            --line: rgba(255, 255, 255, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; padding: 40px 20px 24px; margin-bottom: 24px; }
+        .header h1 { font-size: 2em; margin-bottom: 8px; color: var(--purple-light); }
+        .header p { color: var(--text-secondary); }
+        .back { color: var(--purple-light); text-decoration: none; font-size: 0.9em; }
+        .back:hover { text-decoration: underline; }
+        .highlight {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: 600;
+        }
+        .meta { color: var(--text-secondary); font-size: 0.9em; text-align: center; margin-bottom: 24px; }
+        .meta a { color: var(--purple-light); text-decoration: none; }
+        .meta a:hover { text-decoration: underline; }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+        .card h2 { color: var(--purple-light); font-size: 1.2em; margin-bottom: 8px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+        .card h2 a { color: var(--text-secondary); font-size: 0.75em; font-weight: 400; text-decoration: none; white-space: nowrap; }
+        .card h2 a:hover { text-decoration: underline; color: var(--purple-light); }
+        .card p, .card li { color: var(--text-secondary); }
+        .card ul { padding-left: 20px; }
+        .card a { color: var(--purple-light); text-decoration: none; }
+        .card a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px 6px; text-align: left; border-top: 1px solid var(--line); vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 500; font-size: 0.8em; border-top: none; }
+        th.num, td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+        td.num { font-weight: 600; }
+        .model { font-weight: 600; }
+        .model-id { color: var(--text-secondary); font-size: 0.75em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .note { color: var(--text-secondary); font-size: 0.8em; line-height: 1.5; margin-top: 2px; }
+        .promo { color: #34D399; }
+        .was { color: var(--text-secondary); font-weight: 400; font-size: 0.75em; text-decoration: line-through; display: block; }
+        details summary { cursor: pointer; color: var(--purple-light); font-size: 1.2em; font-weight: 600; list-style: none; }
+        details summary::-webkit-details-marker { display: none; }
+        details summary::before { content: '▸ '; }
+        details[open] summary::before { content: '▾ '; }
+        details table { margin-top: 12px; }
+        .status { text-align: center; color: var(--text-secondary); padding: 24px; }
+        .status.error { color: #FCA5A5; }
+        .footer { text-align: center; padding: 40px 20px; color: var(--text-secondary); font-size: 0.85em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back">← 返回支援中心</a>
+            <h1 style="margin-top: 16px;">模型價目表</h1>
+            <p>BenchAI 支援模型的 API 定價（美元／每百萬 tokens）</p>
+        </div>
+
+        <div class="highlight">
+            所有費用由您自己的 API 金鑰直接支付給各供應商，BenchAI 不經手、不加價。
+        </div>
+
+        <div class="meta" id="meta">載入價目表中…</div>
+
+        <div id="vendors"></div>
+
+        <div class="card" id="legacy-card" hidden>
+            <details>
+                <summary>舊版模型</summary>
+                <p style="margin-top: 8px;">已從目前陣容移除，但 App 內的歷史紀錄仍以這些價格顯示費用。</p>
+                <div id="legacy"></div>
+            </details>
+        </div>
+
+        <div class="card">
+            <h2>如何閱讀這張表</h2>
+            <ul>
+                <li><strong>Input</strong>：您送出的內容，包含提示詞、附件與對話歷史。</li>
+                <li><strong>Output</strong>：模型的回覆。會思考的模型（Claude、GPT-6、Grok、Gemini 等）把思考 tokens 也算在 Output 內，實際費用會高於看得到的文字；「思考深度」設得越深，費用越高。</li>
+                <li><strong>長文加價</strong>：單次請求的輸入超過門檻時，整筆請求改用較高費率。</li>
+                <li><strong>優惠價</strong>：供應商限時折扣，表中直接顯示現行優惠價與結束日。</li>
+                <li>參考值：一次全模型比較（約 1K tokens 輸入、每個模型回覆 1K tokens）合計約 US$0.25；日常挑 2–3 個模型比較大多落在每次 $0.02–$0.10。</li>
+                <li>價格可能隨供應商調整而變動，請以各官方定價頁為準。App 會每日自動同步這份價目表。</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 BenchAI. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var VENDORS = [
+            { key: 'openai',    name: 'OpenAI',    url: 'https://developers.openai.com/api/docs/pricing' },
+            { key: 'anthropic', name: 'Anthropic', url: 'https://platform.claude.com/docs/en/about-claude/pricing' },
+            { key: 'google',    name: 'Google',    url: 'https://ai.google.dev/gemini-api/docs/pricing' },
+            { key: 'xai',       name: 'xAI',       url: 'https://docs.x.ai/docs/models' },
+            { key: 'groq',      name: 'Groq',      url: 'https://console.groq.com/docs/models' }
+        ];
+
+        function esc(s) {
+            return String(s).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+        function usd(n) { return '$' + Number(n).toFixed(2); }
+        function kTokens(n) { return n >= 1000000 ? (n / 1000000) + 'M' : Math.round(n / 1000) + 'K'; }
+        function today() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+        }
+
+        // 與 App 內 PricingService 相同的規則：promo 在期限內（含當天）優先。
+        function effective(m) {
+            if (m.promo && m.promo.until && today() <= m.promo.until) {
+                return { input: m.promo.input, output: m.promo.output, promoUntil: m.promo.until };
+            }
+            return { input: m.input, output: m.output, promoUntil: null };
+        }
+
+        function rowHTML(id, m) {
+            var r = effective(m);
+            var notes = [];
+            if (r.promoUntil) {
+                notes.push('<span class="promo">優惠價至 ' + esc(r.promoUntil) + '</span>，原價 ' + usd(m.input) + ' / ' + usd(m.output));
+            }
+            if (m.long_context) {
+                notes.push('輸入超過 ' + kTokens(m.long_context.threshold) + ' tokens：' + usd(m.long_context.input) + ' / ' + usd(m.long_context.output));
+            }
+            if (m.note) { notes.push(esc(m.note)); }
+            var was = function (base, eff) { return eff !== base ? '<span class="was">' + usd(base) + '</span>' : ''; };
+            return '<tr>' +
+                '<td><div class="model">' + esc(m.name || id) + '</div>' +
+                '<div class="model-id">' + esc(id) + '</div>' +
+                (notes.length ? '<div class="note">' + notes.join('<br>') + '</div>' : '') +
+                '</td>' +
+                '<td class="num">' + usd(r.input) + was(m.input, r.input) + '</td>' +
+                '<td class="num">' + usd(r.output) + was(m.output, r.output) + '</td>' +
+                '</tr>';
+        }
+
+        function tableHTML(entries) {
+            return '<table><thead><tr><th>模型</th><th class="num">Input</th><th class="num">Output</th></tr></thead><tbody>' +
+                entries.map(function (e) { return rowHTML(e.id, e.m); }).join('') +
+                '</tbody></table>';
+        }
+
+        function byPriceDesc(a, b) {
+            return (b.m.input - a.m.input) || (b.m.output - a.m.output) || a.id.localeCompare(b.id);
+        }
+
+        function render(table) {
+            var models = table.models || {};
+            var current = [], legacy = [];
+            Object.keys(models).forEach(function (id) {
+                var m = models[id];
+                if (typeof m.input !== 'number' || typeof m.output !== 'number') { return; }
+                (m.legacy ? legacy : current).push({ id: id, m: m });
+            });
+
+            var vendorHTML = '';
+            var vendorCount = 0;
+            VENDORS.concat([{ key: null, name: '其他', url: null }]).forEach(function (v) {
+                var entries = current.filter(function (e) {
+                    return v.key ? e.m.vendor === v.key : VENDORS.every(function (k) { return k.key !== e.m.vendor; });
+                }).sort(byPriceDesc);
+                if (!entries.length) { return; }
+                vendorCount++;
+                vendorHTML += '<div class="card"><h2>' + esc(v.name) +
+                    (v.url ? '<a href="' + esc(v.url) + '" target="_blank" rel="noopener">官方定價頁 ↗</a>' : '') +
+                    '</h2>' + tableHTML(entries) + '</div>';
+            });
+            document.getElementById('vendors').innerHTML = vendorHTML;
+
+            if (legacy.length) {
+                document.getElementById('legacy').innerHTML = tableHTML(legacy.sort(byPriceDesc));
+                document.getElementById('legacy-card').hidden = false;
+            }
+
+            document.getElementById('meta').innerHTML =
+                '目前陣容 ' + current.length + ' 個模型、' + vendorCount + ' 家供應商 ・ 價目表更新日 ' + esc(table.updated_at || '—') +
+                '<br>與 App 內費用估算使用同一份資料：<a href="pricing.json" target="_blank" rel="noopener">pricing.json</a>';
+        }
+
+        function fail(err) {
+            var el = document.getElementById('meta');
+            el.className = 'status error';
+            el.innerHTML = '價目表載入失敗（' + esc(err && err.message ? err.message : err) + '）。' +
+                '請直接查看 <a href="pricing.json">pricing.json</a> 或各供應商官方定價頁。';
+        }
+
+        fetch('pricing.json', { cache: 'no-cache' })
+            .then(function (r) { if (!r.ok) { throw new Error('HTTP ' + r.status); } return r.json(); })
+            .then(function (t) { if (!t || !t.models) { throw new Error('格式不符'); } render(t); })
+            .catch(fail);
+    })();
+    </script>
+</body>
+</html>
