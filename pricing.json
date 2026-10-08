@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-01",
+  "updated_at": "2026-10-09",
   "models": {
     "gpt-6-astra": { "name": "GPT-6 Astra", "vendor": "openai", "input": 10.00, "output": 50.00, "long_context": { "threshold": 272000, "input": 20.00, "output": 75.00 } },
     "gpt-6-sol": { "name": "GPT-6 Sol", "vendor": "openai", "legacy": true, "note": "2026-09-30 由 GPT-6.1 Sol 取代", "input": 2.00, "output": 10.00, "long_context": { "threshold": 272000, "input": 4.00, "output": 15.00 } },
@@ -11,7 +11,8 @@
     "claude-opus-5-5": { "name": "Claude Opus 5.5", "vendor": "anthropic", "input": 4.00, "output": 20.00 },
     "claude-sonnet-5": { "name": "Claude Sonnet 5", "vendor": "anthropic", "legacy": true, "note": "2026-09-30 由 Claude Sonnet 5.5 取代", "input": 2.00, "output": 10.00 },
     "claude-sonnet-5-5": { "name": "Claude Sonnet 5.5", "vendor": "anthropic", "input": 2.00, "output": 10.00 },
-    "claude-haiku-4-5": { "name": "Claude Haiku 4.5", "vendor": "anthropic", "input": 1.00, "output": 5.00 },
+    "claude-haiku-5-5": { "name": "Claude Haiku 5.5", "vendor": "anthropic", "input": 0.10, "output": 0.50, "long_context": { "threshold": 100000, "input": 0.50, "output": 2.50 } },
+    "claude-haiku-4-5": { "name": "Claude Haiku 4.5", "vendor": "anthropic", "legacy": true, "note": "2026-10-09 由 Claude Haiku 5.5 取代", "input": 1.00, "output": 5.00 },
     "gemini-3.8-flash": { "name": "Gemini 3.8 Flash", "vendor": "google", "input": 1.50, "output": 7.50, "promo": { "input": 0.75, "output": 3.75, "until": "2026-12-31" } },
     "gemini-3.1-pro-preview": { "name": "Gemini 3.1 Pro", "vendor": "google", "input": 2.00, "output": 12.00, "long_context": { "threshold": 200000, "input": 4.00, "output": 18.00 } },
     "openai/gpt-oss-120b": { "name": "GPT-OSS 120B", "vendor": "groq", "input": 0.15, "output": 0.60 },
