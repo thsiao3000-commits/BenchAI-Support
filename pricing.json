@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-28",
   "models": {
     "gpt-6-astra": { "name": "GPT-6 Astra", "vendor": "openai", "input": 10.00, "output": 50.00, "long_context": { "threshold": 272000, "input": 20.00, "output": 75.00 } },
     "gpt-6-sol": { "name": "GPT-6 Sol", "vendor": "openai", "legacy": true, "note": "2026-09-30 由 GPT-6.1 Sol 取代", "input": 2.00, "output": 10.00, "long_context": { "threshold": 272000, "input": 4.00, "output": 15.00 } },
     "gpt-6.1-sol": { "name": "GPT-6.1 Sol", "vendor": "openai", "input": 2.00, "output": 10.00, "long_context": { "threshold": 272000, "input": 4.00, "output": 15.00 } },
-    "gpt-5.6-terra": { "name": "GPT-5.6 Terra", "vendor": "openai", "input": 2.00, "output": 12.00, "long_context": { "threshold": 272000, "input": 4.00, "output": 18.00 } },
+    "gpt-6.1-terra": { "name": "GPT-6.1 Terra", "vendor": "openai", "input": 1.00, "output": 5.00, "long_context": { "threshold": 272000, "input": 2.00, "output": 7.50 } },
+    "gpt-5.6-terra": { "name": "GPT-5.6 Terra", "vendor": "openai", "legacy": true, "note": "2026-10-28 由 GPT-6.1 Terra 取代", "input": 2.00, "output": 12.00, "long_context": { "threshold": 272000, "input": 4.00, "output": 18.00 } },
     "gpt-6-luna": { "name": "GPT-6 Luna", "vendor": "openai", "input": 0.10, "output": 0.50, "long_context": { "threshold": 272000, "input": 0.20, "output": 0.75 } },
     "claude-fable-5-1": { "name": "Claude Fable 5.1", "vendor": "anthropic", "input": 10.00, "output": 50.00 },
     "claude-opus-5-5": { "name": "Claude Opus 5.5", "vendor": "anthropic", "input": 4.00, "output": 20.00 },
